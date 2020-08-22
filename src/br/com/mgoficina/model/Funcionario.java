@@ -1,5 +1,9 @@
 package br.com.mgoficina.model;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+
 public class Funcionario {
 	
 	private String nome;
@@ -7,6 +11,8 @@ public class Funcionario {
 	private int idade;
 	private char sexo;
 	private String cargo;
+	private List<Object> servicos = new ArrayList<>();
+	private UUID id;
 	
 	public Funcionario(String nome, String cpf, int idade, char sexo, String cargo) {
 		super();
@@ -15,6 +21,12 @@ public class Funcionario {
 		this.idade = idade;
 		this.sexo = sexo;
 		this.cargo = cargo;
+		id = UUID.randomUUID(); //criei um ID pseudoAleatorio usando a classe UUID
+	}
+	
+	public String getId()
+	{
+		return this.id.toString();
 	}
 
 	public String getNome() {
@@ -57,5 +69,13 @@ public class Funcionario {
 		this.cargo = cargo;
 	}
 	
+	public boolean equals(Object obj)
+	{
+		if(obj instanceof Funcionario)
+		{
+			if(this.getId().equals(((Funcionario) obj).getId())) return true;
+		}
+		return false;
+	}
 	
 }
