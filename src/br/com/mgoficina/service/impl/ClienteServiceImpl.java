@@ -29,7 +29,12 @@ public class ClienteServiceImpl implements IClienteService{
 	}
 
 	@Override
-	public Cliente findClienteById(int indice) {
+	public Cliente findClienteById(int id) {
+		for (Cliente cliente: this.clientes) {
+			if (cliente.getId() == id) {
+				return cliente;
+			}
+		}
 		return null;
 	}
 
@@ -69,7 +74,12 @@ public class ClienteServiceImpl implements IClienteService{
 	}
 
 	@Override
-	public boolean deleteCliente(int indice) {
+	public boolean deleteCliente(int id) {
+		Cliente cliente = findClienteById(id);
+		if (cliente != null) {
+			this.clientes.remove(cliente);
+			return true;
+		}
 		return false;
 	}
 	

@@ -6,9 +6,9 @@ public class Cliente {
 	private String cpf;
 	private int idade;
 	private char sexo;
+	private int id;
 	
 	public Cliente(String nome, String cpf, int idade, char sexo) {
-		super();
 		this.nome = nome;
 		this.cpf = cpf;
 		this.idade = idade;
@@ -46,7 +46,28 @@ public class Cliente {
 	public void setSexo(char sexo) {
 		this.sexo = sexo;
 	}
-	
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Cliente other = (Cliente) obj;
+		if (id != other.id)
+			return false;
+		return true;
+	}
 	
 	
 }
