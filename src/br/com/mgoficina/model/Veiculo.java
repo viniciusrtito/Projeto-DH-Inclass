@@ -1,8 +1,10 @@
 package br.com.mgoficina.model;
 
-public class Veiculo {
+import br.com.mgoficina.service.impl.VeiculoServiceImpl;
 
-	private int codVeiculo;
+public class Veiculo extends VeiculoServiceImpl{
+
+	private Long codVeiculo;
 	private String placa;
 	private String modelo;
 	private int ano;
@@ -10,7 +12,7 @@ public class Veiculo {
 	private String chassis;
 	private String tipo;
 	
-	public Veiculo(int codVeiculo, String placa, String modelo, int ano, String cor, String chassis, String tipo) {
+	public Veiculo(Long codVeiculo, String placa, String modelo, int ano, String cor, String chassis, String tipo) {
 		super();
 		this.codVeiculo = codVeiculo;
 		this.placa = placa;
@@ -21,11 +23,11 @@ public class Veiculo {
 		this.tipo = tipo;
 	}
 
-	public int getCodVeiculo() {
+	public Long getCodVeiculo() {
 		return codVeiculo;
 	}
 
-	public void setCodVeiculo(int codVeiculo) {
+	public void setCodVeiculo(Long codVeiculo) {
 		this.codVeiculo = codVeiculo;
 	}
 
@@ -75,6 +77,31 @@ public class Veiculo {
 
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
+	}
+
+	
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Veiculo other = (Veiculo) obj;
+		if (codVeiculo == null) {
+			if (other.codVeiculo != null)
+				return false;
+		} else if (!codVeiculo.equals(other.codVeiculo))
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Veiculo [codVeiculo=" + codVeiculo + ", placa=" + placa + ", modelo=" + modelo + ", ano=" + ano
+				+ ", cor=" + cor + ", chassis=" + chassis + ", tipo=" + tipo + "]";
 	}
 
 		

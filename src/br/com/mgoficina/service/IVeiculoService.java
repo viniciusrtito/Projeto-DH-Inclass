@@ -6,11 +6,11 @@ import br.com.mgoficina.model.Veiculo;
 
 public interface IVeiculoService {
 
-	public Veiculo create(Veiculo veiculo);
-	public Veiculo findVeiculoById(int codVeiculo);
+	public boolean create(Veiculo veiculo);
+	public Veiculo findVeiculoById(Long codVeiculo);
 	public Veiculo findVeiculoByPlaca(String Placa);
 	public List<Veiculo> findAll();
 	public boolean updateVeiculo(Veiculo veiculo);
-	public boolean deleteVeiculo(int codVeiculo);
+	public boolean deleteVeiculo(Long codVeiculo);
 	
 }

@@ -1,58 +1,91 @@
 package br.com.mgoficina.service.impl;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import br.com.mgoficina.model.Veiculo;
 import br.com.mgoficina.service.IVeiculoService;
 
-public class VeiculoServiceImpl implements IVeiculoService{
+public class VeiculoServiceImpl implements IVeiculoService {
 
 	private List<Veiculo> veiculos;
-	
+
 	public VeiculoServiceImpl() {
-		veiculos = new ArrayList<Veiculos>();
-	}	
-	
+		this.veiculos = new ArrayList<Veiculo>();
+	}
+
 	public VeiculoServiceImpl(List<Veiculo> veiculos) {
-		this.veiculos = new ArrayList<> (veiculos);
+		this.veiculos = new ArrayList<>(veiculos);
 	}
 
 	@Override
-	public Veiculo create(Veiculo veiculo) {
-		// TODO Auto-generated method stub
-		return null;
+	public boolean create(Veiculo veiculo) {
+		for (Veiculo veic : this.veiculos) {
+			if (veic.equals(veiculo))
+				return false;
+		}
+
+		this.veiculos.add(veiculo);
+
+		return true;
 	}
 
 	@Override
-	public Veiculo findVeiculoById(int codVeiculo) {
-		// TODO Auto-generated method stub
+	public Veiculo findVeiculoById(Long codVeiculo) {
+		for (Veiculo veic : this.veiculos) {
+			if (veic.getCodVeiculo().equals(codVeiculo))
+				return veic;
+		}
+
 		return null;
+
 	}
 
 	@Override
 	public Veiculo findVeiculoByPlaca(String Placa) {
-		// TODO Auto-generated method stub
+		for (Veiculo veic : this.veiculos) {
+			if (veic.getPlaca().equals(Placa))
+				return veic;
+		}
+
 		return null;
 	}
 
 	@Override
 	public List<Veiculo> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return Collections.unmodifiableList(this.veiculos);
 	}
 
 	@Override
 	public boolean updateVeiculo(Veiculo veiculo) {
-		// TODO Auto-generated method stub
-		return false;
+		if (this.veiculos.contains(veiculo)) {
+
+			int indiceDoObjeto = this.veiculos.indexOf(veiculo);
+			this.veiculos.remove(veiculo);
+			this.veiculos.add(indiceDoObjeto, veiculo);
+			return true;
+
+		} else {
+
+			return false;
+
+		}
 	}
 
 	@Override
-	public boolean deleteVeiculo(int codVeiculo) {
-		// TODO Auto-generated method stub
+	public boolean deleteVeiculo(Long codVeiculo) {
+		for(Veiculo veic: this.veiculos)
+		{
+			if(veic.getCodVeiculo().equals(codVeiculo))
+				{
+				veiculos.remove(veic);
+				return true;
+				}
+		}	
+		
+		
 		return false;
 	}
 
-	
 }
