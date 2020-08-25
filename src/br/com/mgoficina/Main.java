@@ -20,16 +20,16 @@ public class Main {
 		
 		//Adicionar veículos á lista e exibir a lista
 		veiculos.create(veic1);
-		System.out.println(veiculos.findAll().toString());
+//		System.out.println(veiculos.findAll().toString());
 		veiculos.create(veic2);
-		System.out.println(veiculos.findAll().toString());
+//		System.out.println(veiculos.findAll().toString());
 		veiculos.create(veic3);
-		System.out.println(veiculos.findAll().toString());
+//		System.out.println(veiculos.findAll().toString());
 		veiculos.create(veic4);
-		System.out.println(veiculos.findAll().toString());
+//		System.out.println(veiculos.findAll().toString());
 		veiculos.create(veic5);
-		System.out.println(veiculos.findAll().toString());
-		System.out.println("------------------------------------------------------------------------");
+//		System.out.println(veiculos.findAll().toString());
+//		System.out.println("------------------------------------------------------------------------");
 		
 		//Buscar veículo por placa
 		System.out.println(veiculos.findVeiculoByPlaca("BOM2531"));
@@ -45,7 +45,7 @@ public class Main {
 		//Deletar Veículo
 		System.out.println(veiculos.findVeiculoById((long)4));
 		veiculos.deleteVeiculo((long)4);
-		System.out.println(veiculos.findVeiculoById((long)4));
+//		System.out.println(veiculos.findVeiculoById((long)4));
 		
 		
 	}

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import br.com.mgoficina.exception.DataIntegrityException;
+import br.com.mgoficina.exception.ObjectNotFoundException;
 import br.com.mgoficina.model.Veiculo;
 import br.com.mgoficina.service.IVeiculoService;
 
@@ -32,24 +34,30 @@ public class VeiculoServiceImpl implements IVeiculoService {
 	}
 
 	@Override
-	public Veiculo findVeiculoById(Long codVeiculo) {
+	public Veiculo findVeiculoById(Long codVeiculo) throws ObjectNotFoundException{
 		for (Veiculo veic : this.veiculos) {
 			if (veic.getCodVeiculo().equals(codVeiculo))
 				return veic;
 		}
 
-		return null;
+		throw new ObjectNotFoundException();
 
 	}
 
 	@Override
-	public Veiculo findVeiculoByPlaca(String Placa) {
+	public Veiculo findVeiculoByPlaca(String Placa)  throws ObjectNotFoundException , DataIntegrityException {
+		
+		if((Placa.length() > 7) || (!Placa.toUpperCase().substring(0, 3).matches("[A-Z]*")) || (!Placa.substring(3).matches("[0-9]*"))) {
+			throw new DataIntegrityException("Placa");
+		}
+		
+		
 		for (Veiculo veic : this.veiculos) {
 			if (veic.getPlaca().equals(Placa))
 				return veic;
 		}
 
-		return null;
+		throw new ObjectNotFoundException();
 	}
 
 	@Override
