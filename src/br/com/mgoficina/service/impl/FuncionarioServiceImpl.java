@@ -3,6 +3,7 @@ package br.com.mgoficina.service.impl;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.UUID;
 
 import br.com.mgoficina.model.Funcionario;
 import br.com.mgoficina.service.IFuncionarioService;
@@ -37,7 +38,7 @@ public class FuncionarioServiceImpl implements IFuncionarioService {
 	}
 
 	@Override
-	public Funcionario findClienteById(String id) {
+	public Funcionario findById(UUID id) {
 		
 		for(Funcionario func: this.funcionarios)
 		{
@@ -48,7 +49,7 @@ public class FuncionarioServiceImpl implements IFuncionarioService {
 	}
 
 	@Override
-	public Funcionario findClienteByNome(String nome) {
+	public Funcionario findByNome(String nome) {
 		
 		for(Funcionario func: this.funcionarios)
 		{
@@ -64,7 +65,7 @@ public class FuncionarioServiceImpl implements IFuncionarioService {
 	}
 
 	@Override
-	public boolean updateFuncionario(Funcionario funcionario) {
+	public boolean update(Funcionario funcionario) {
 		
 	if(this.funcionarios.contains(funcionario)) {
 			
@@ -82,7 +83,7 @@ public class FuncionarioServiceImpl implements IFuncionarioService {
 	}
 
 	@Override
-	public boolean deleteFuncionario(String  id) {
+	public boolean delete(UUID  id) {
 		
 		for(Funcionario func: this.funcionarios)
 		{

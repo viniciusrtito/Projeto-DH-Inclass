@@ -14,19 +14,19 @@ public class Funcionario {
 	private List<Object> servicos = new ArrayList<>();
 	private UUID id;
 	
-	public Funcionario(String nome, String cpf, int idade, char sexo, String cargo) {
+	public Funcionario(String nome, String cpf, int idade, char sexo, String cargo,UUID id) {
 		super();
 		this.nome = nome;
 		this.cpf = cpf;
 		this.idade = idade;
 		this.sexo = sexo;
 		this.cargo = cargo;
-		id = UUID.randomUUID(); //criei um ID pseudoAleatorio usando a classe UUID
+		this.id = id; //criei um ID pseudoAleatorio usando a classe UUID
 	}
 	
-	public String getId()
+	public UUID getId()
 	{
-		return this.id.toString();
+		return this.id;
 	}
 
 	public String getNome() {
