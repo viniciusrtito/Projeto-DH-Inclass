@@ -1,5 +1,7 @@
 package br.com.mgoficina.model;
 
+import java.util.UUID;
+
 import br.com.mgoficina.service.impl.VeiculoServiceImpl;
 
 public class Veiculo extends VeiculoServiceImpl{
@@ -11,8 +13,9 @@ public class Veiculo extends VeiculoServiceImpl{
 	private String cor;
 	private String chassis;
 	private String tipo;
+	private UUID id;
 	
-	public Veiculo(Long codVeiculo, String placa, String modelo, int ano, String cor, String chassis, String tipo) {
+	public Veiculo(Long codVeiculo, String placa, String modelo, int ano, String cor, String chassis, String tipo,UUID id) {
 		super();
 		this.codVeiculo = codVeiculo;
 		this.placa = placa;
@@ -21,6 +24,7 @@ public class Veiculo extends VeiculoServiceImpl{
 		this.cor = cor;
 		this.chassis = chassis;
 		this.tipo = tipo;
+		this.id = id;
 	}
 
 	public Long getCodVeiculo() {

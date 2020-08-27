@@ -3,6 +3,7 @@ package br.com.mgoficina.service.impl;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.UUID;
 
 import br.com.mgoficina.exception.DataIntegrityException;
 import br.com.mgoficina.exception.ObjectNotFoundException;
@@ -22,21 +23,21 @@ public class VeiculoServiceImpl implements IVeiculoService {
 	}
 
 	@Override
-	public boolean create(Veiculo veiculo) {
+	public Veiculo create(Veiculo veiculo) {
 		for (Veiculo veic : this.veiculos) {
 			if (veic.equals(veiculo))
-				return false;
+				return null;
 		}
 
 		this.veiculos.add(veiculo);
 
-		return true;
+		return veiculo;
 	}
 
 	@Override
-	public Veiculo findVeiculoById(Long codVeiculo) throws ObjectNotFoundException{
+	public Veiculo findById(UUID id) throws ObjectNotFoundException{
 		for (Veiculo veic : this.veiculos) {
-			if (veic.getCodVeiculo().equals(codVeiculo))
+			if (veic.getCodVeiculo().equals(id))
 				return veic;
 		}
 
@@ -66,7 +67,8 @@ public class VeiculoServiceImpl implements IVeiculoService {
 	}
 
 	@Override
-	public boolean updateVeiculo(Veiculo veiculo) {
+	public boolean update(Veiculo veiculo) {
+		
 		if (this.veiculos.contains(veiculo)) {
 
 			int indiceDoObjeto = this.veiculos.indexOf(veiculo);
@@ -82,10 +84,10 @@ public class VeiculoServiceImpl implements IVeiculoService {
 	}
 
 	@Override
-	public boolean deleteVeiculo(Long codVeiculo) {
+	public boolean delete(UUID id) {
 		for(Veiculo veic: this.veiculos)
 		{
-			if(veic.getCodVeiculo().equals(codVeiculo))
+			if(veic.getCodVeiculo().equals(id))
 				{
 				veiculos.remove(veic);
 				return true;

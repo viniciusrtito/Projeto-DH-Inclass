@@ -6,13 +6,8 @@ import br.com.mgoficina.exception.DataIntegrityException;
 import br.com.mgoficina.exception.ObjectNotFoundException;
 import br.com.mgoficina.model.Veiculo;
 
-public interface IVeiculoService {
+public interface IVeiculoService extends IService<Veiculo> {
 
-	public boolean create(Veiculo veiculo);
-	public Veiculo findVeiculoById(Long codVeiculo) throws ObjectNotFoundException, DataIntegrityException;
 	public Veiculo findVeiculoByPlaca(String Placa) throws ObjectNotFoundException;
-	public List<Veiculo> findAll();
-	public boolean updateVeiculo(Veiculo veiculo);
-	public boolean deleteVeiculo(Long codVeiculo);
 	
 }
