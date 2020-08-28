@@ -24,6 +24,20 @@ public class Funcionario {
 		this.id = id; //criei um ID pseudoAleatorio usando a classe UUID
 	}
 	
+
+	public List<Object> getServicos() {
+		return servicos;
+	}
+
+	public void setServicos(List<Object> servicos) {
+		this.servicos = servicos;
+	}
+
+	public void addServico(Servico servico)
+	{
+		servicos.add(servico);
+	}
+	
 	public UUID getId()
 	{
 		return this.id;

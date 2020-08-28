@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 import br.com.mgoficina.exception.ObjectNotFoundException;
 import br.com.mgoficina.model.Funcionario;
@@ -19,6 +20,18 @@ public class FuncionarioServiceImpl implements IFuncionarioService {
 	{
 		this.funcionarios = new ArrayList<Funcionario>();
 	}
+	
+	public List<Funcionario> findByCargo(String cargo)
+	{
+		  List<Funcionario> funcionariosMesmoCargo = funcionarios
+				  .stream()
+				  .filter(c -> c.getCargo().equals(cargo))
+				  .collect(Collectors.toList());
+		  
+		  return funcionariosMesmoCargo;
+	}
+	
+	
 	
 	public FuncionarioServiceImpl(List<Funcionario> funcionarios)
 	{

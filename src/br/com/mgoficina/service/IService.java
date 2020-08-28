@@ -11,5 +11,5 @@ public interface IService <T> {
 	public List<T> findAll();
 	public boolean update(T entidade);
 	public boolean delete(UUID id);
-
+	
 }
