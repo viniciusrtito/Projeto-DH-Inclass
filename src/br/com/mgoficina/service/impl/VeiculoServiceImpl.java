@@ -37,7 +37,7 @@ public class VeiculoServiceImpl implements IVeiculoService {
 	@Override
 	public Veiculo findById(UUID id) throws ObjectNotFoundException{
 		for (Veiculo veic : this.veiculos) {
-			if (veic.getCodVeiculo().equals(id))
+			if (veic.getId().equals(id))
 				return veic;
 		}
 

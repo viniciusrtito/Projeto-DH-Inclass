@@ -15,6 +15,14 @@ public class Veiculo extends VeiculoServiceImpl{
 	private String tipo;
 	private UUID id;
 	
+	public UUID getId() {
+		return id;
+	}
+
+	public void setId(UUID id) {
+		this.id = id;
+	}
+
 	public Veiculo(Long codVeiculo, String placa, String modelo, int ano, String cor, String chassis, String tipo,UUID id) {
 		super();
 		this.codVeiculo = codVeiculo;
