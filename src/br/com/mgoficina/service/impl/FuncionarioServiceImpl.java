@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 
+import br.com.mgoficina.exception.ObjectNotFoundException;
 import br.com.mgoficina.model.Funcionario;
 import br.com.mgoficina.service.IFuncionarioService;
 
@@ -34,7 +35,7 @@ public class FuncionarioServiceImpl implements IFuncionarioService {
 		
 		this.funcionarios.add(funcionario);
 		
-		return null;
+		return funcionario;
 	}
 
 	@Override
@@ -45,7 +46,7 @@ public class FuncionarioServiceImpl implements IFuncionarioService {
 			if(func.getId().equals(id)) return func;
 		}
 		
-		return null;
+		throw new ObjectNotFoundException();
 	}
 
 	@Override
@@ -56,7 +57,7 @@ public class FuncionarioServiceImpl implements IFuncionarioService {
 			if(func.getNome().equals(nome)) return func;
 		}
 		
-		return null;
+		throw new ObjectNotFoundException();
 	}
 
 	@Override
@@ -76,7 +77,7 @@ public class FuncionarioServiceImpl implements IFuncionarioService {
 			
 		}else {		
 			
-			return false;
+			throw new ObjectNotFoundException();
 			
 		}
 		

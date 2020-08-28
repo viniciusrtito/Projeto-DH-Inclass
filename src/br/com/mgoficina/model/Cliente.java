@@ -1,18 +1,25 @@
 package br.com.mgoficina.model;
 
+import java.util.UUID;
+
 public class Cliente {
 	
 	private String nome;
 	private String cpf;
 	private int idade;
 	private char sexo;
-	private int id;
+	private UUID id;
 	
-	public Cliente(String nome, String cpf, int idade, char sexo) {
+	public Cliente(String nome, String cpf, int idade, char sexo, UUID id) {
 		this.nome = nome;
 		this.cpf = cpf;
 		this.idade = idade;
 		this.sexo = sexo;
+		this.id = id;
+	}
+
+	public void setId(UUID id) {
+		this.id = id;
 	}
 
 	public String getNome() {
@@ -47,14 +54,11 @@ public class Cliente {
 		this.sexo = sexo;
 	}
 
-	public int getId() {
+	public UUID getId() {
 		return id;
 	}
 
-	public void setId(int id) {
-		this.id = id;
-	}
-
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

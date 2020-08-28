@@ -38,13 +38,13 @@ public class Main {
 		System.out.println("------------------------------------------------------------------------");
 		
 		//Busca Veículo por id
-		System.out.println(veiculos.findVeiculoById((long)2));
-		System.out.println(veiculos.findVeiculoById((long)4));
+		System.out.println(veiculos.findById((long)2));
+		System.out.println(veiculos.findById((long)4));
 		System.out.println("------------------------------------------------------------------------");
 		
 		//Deletar Veículo
 		System.out.println(veiculos.findVeiculoById((long)4));
-		veiculos.deleteVeiculo((long)4);
+		veiculos.delete((long)4);
 //		System.out.println(veiculos.findVeiculoById((long)4));
 		
 		

@@ -3,7 +3,9 @@ package br.com.mgoficina.service.impl;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.UUID;
 
+import br.com.mgoficina.exception.ObjectNotFoundException;
 import br.com.mgoficina.model.Cliente;
 import br.com.mgoficina.service.IClienteService;
 
@@ -29,13 +31,13 @@ public class ClienteServiceImpl implements IClienteService{
 	}
 
 	@Override
-	public Cliente findClienteById(int id) {
+	public Cliente findById(UUID id) {
 		for (Cliente cliente: this.clientes) {
-			if (cliente.getId() == id) {
+			if (cliente.getId().equals(id)) {
 				return cliente;
 			}
 		}
-		return null;
+		throw new ObjectNotFoundException();
 	}
 
 	@Override
@@ -47,7 +49,7 @@ public class ClienteServiceImpl implements IClienteService{
 			}
 		}
 		
-		return null;
+		throw new ObjectNotFoundException();
 	}
 
 	@Override
@@ -56,7 +58,7 @@ public class ClienteServiceImpl implements IClienteService{
 	}
 
 	@Override
-	public boolean updateCliente(Cliente cliente) {
+	public boolean update(Cliente cliente) {
 		
 		if(this.clientes.contains(cliente)) {
 			
@@ -67,22 +69,22 @@ public class ClienteServiceImpl implements IClienteService{
 			
 		}else {		
 			
-			return false;
+			throw new ObjectNotFoundException();
 			
 		}
 		
 	}
 
 	@Override
-	public boolean deleteCliente(int id) {
-		Cliente cliente = findClienteById(id);
+	public boolean delete(UUID id) {
+		Cliente cliente = findById(id);
 		if (cliente != null) {
 			this.clientes.remove(cliente);
 			return true;
 		}
-		return false;
+		throw new ObjectNotFoundException();
 	}
-	
+
 	
 	
 }
