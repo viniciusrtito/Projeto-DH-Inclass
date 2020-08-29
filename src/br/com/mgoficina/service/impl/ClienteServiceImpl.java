@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 
+import br.com.mgoficina.exception.DataIntegrityException;
 import br.com.mgoficina.exception.ObjectNotFoundException;
 import br.com.mgoficina.model.Cliente;
 import br.com.mgoficina.service.IClienteService;
@@ -26,18 +27,21 @@ public class ClienteServiceImpl implements IClienteService{
 	
 	@Override
 	public Cliente create(Cliente cliente) {
+		if (cliente.getNome() == null) {
+			throw new DataIntegrityException ("Você não pode cadastrar um cliente sem nome");
+		}
 		this.clientes.add(cliente);
 		return cliente;
 	}
 
 	@Override
 	public Cliente findById(UUID id) {
-		for (Cliente cliente: this.clientes) {
-			if (cliente.getId().equals(id)) {
-				return cliente;
+			for (Cliente cliente: this.clientes) {
+				if (cliente.getId() == id) {
+					return cliente;
+				}
 			}
-		}
-		throw new ObjectNotFoundException();
+			throw new ObjectNotFoundException("Cliente com este ID não encontrado!");	
 	}
 
 	@Override
@@ -49,7 +53,7 @@ public class ClienteServiceImpl implements IClienteService{
 			}
 		}
 		
-		throw new ObjectNotFoundException();
+		throw new ObjectNotFoundException("Cliente com esse nome não encontrado!");
 	}
 
 	@Override
@@ -69,7 +73,7 @@ public class ClienteServiceImpl implements IClienteService{
 			
 		}else {		
 			
-			throw new ObjectNotFoundException();
+			throw new ObjectNotFoundException("Cliente não encontrado");
 			
 		}
 		
@@ -82,7 +86,7 @@ public class ClienteServiceImpl implements IClienteService{
 			this.clientes.remove(cliente);
 			return true;
 		}
-		throw new ObjectNotFoundException();
+		throw new ObjectNotFoundException("Cliente com este ID não encontrado!");
 	}
 
 	

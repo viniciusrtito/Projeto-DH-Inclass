@@ -1,5 +1,7 @@
 package br.com.mgoficina.model;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 public class Cliente {
@@ -9,13 +11,15 @@ public class Cliente {
 	private int idade;
 	private char sexo;
 	private UUID id;
+	private List<Veiculo> veiculos = new ArrayList <>();
 	
-	public Cliente(String nome, String cpf, int idade, char sexo, UUID id) {
+	public Cliente(String nome, String cpf, int idade, char sexo, UUID id, List<Veiculo> veiculos ) {
 		this.nome = nome;
 		this.cpf = cpf;
 		this.idade = idade;
 		this.sexo = sexo;
 		this.id = id;
+		this.setVeiculos(veiculos);
 	}
 
 	public void setId(UUID id) {
@@ -58,6 +62,14 @@ public class Cliente {
 		return id;
 	}
 
+
+	public List<Veiculo> getVeiculos() {
+		return veiculos;
+	}
+
+	public void setVeiculos(List<Veiculo> veiculos) {
+		this.veiculos = veiculos;
+	}
 	
 	@Override
 	public boolean equals(Object obj) {
@@ -72,6 +84,5 @@ public class Cliente {
 			return false;
 		return true;
 	}
-	
 	
 }
